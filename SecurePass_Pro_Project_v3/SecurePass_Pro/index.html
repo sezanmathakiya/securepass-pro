@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f5f6fc"><title>SecurePass Lab — Password Mathematics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="topbar"><a class="brand" href="#"><span class="logo">S</span><span>securepass<span class="muted-brand">.lab</span></span></a><div class="topnote"><i></i> FOUNDATION OF MATHEMATICS <b>·</b> MCA SEM 1</div><button id="theme" class="theme" aria-label="Toggle dark mode">◐</button></header>
+<main class="wrap">
+<section class="hero"><div class="hero-text"><div class="eyebrow">✳ &nbsp; COMBINATORICS, MADE INTERACTIVE</div><h1>Every password is a<br><em>mathematical universe.</em></h1><p>Explore the size of a password's search space, see how PIN rules change the number of possible codes, and understand brute-force guessing through the power of counting.</p><div class="pills"><span>✓ Runs locally</span><span>✓ Live calculations</span><span>✓ No account needed</span></div></div><div class="hero-visual"><div class="orbit o1"></div><div class="orbit o2"></div><div class="float f1">R<sup>L</sup> &nbsp; SEARCH SPACE</div><div class="shield"><span>✓</span></div><div class="float f2">COMBINATORICS × SECURITY</div><div class="bubble b1">01</div><div class="bubble b2">Σ</div></div></section>
+<nav class="tabs"><button class="tab active" data-tab="lab"><small>01</small> Password lab</button><button class="tab" data-tab="pin"><small>02</small> PIN combinations</button><button class="tab" data-tab="learn"><small>03</small> Math in computing</button></nav>
+<section class="view active" id="lab">
+<div class="section-head"><div><label>EXPERIMENT 01 / PASSWORD SEARCH SPACE</label><h2>Explore the possibilities.</h2><p>Change the sample password to see the mathematics update instantly.</p></div><span class="live">● LIVE</span></div>
+<div class="columns">
+<article class="card"><div class="card-title"><div class="icon purple">⌁</div><div><h3>Password analyzer</h3><p>Try a sample password — never use a real one.</p></div><span class="tag">LOCAL ONLY</span></div>
+<label class="field-label" for="password">YOUR TEST PASSWORD</label><form id="passwordForm"><div class="password-field"><input id="password" type="password" value="Example2026!" autocomplete="off" aria-label="Enter a sample password"><button id="show" type="button">Show</button></div><div class="form-actions"><button class="analyze-btn" type="submit"><span>Analyze password</span><b>→</b></button><span id="submitStatus" class="submit-status" aria-live="polite">Ready to analyze</span></div></form><p class="privacy">✓ &nbsp; Your input stays in this browser. It is not sent to a server.</p>
+<div class="strength-head"><div><label>ESTIMATED STRENGTH</label><strong id="strength">Good</strong></div><span id="hint">Room to improve</span></div><div class="meter" id="meter"><i></i><i></i><i></i><i></i><i></i></div>
+<div class="checks"><div id="cLen">○ &nbsp; 12+ characters</div><div id="cLow">○ &nbsp; Lowercase letters</div><div id="cUp">○ &nbsp; Uppercase letters</div><div id="cNum">○ &nbsp; Numbers</div><div id="cSym">○ &nbsp; Symbols</div><div id="cVar">○ &nbsp; Character variety</div></div>
+<p class="fineprint">Strength is a simple teaching heuristic, not a security certification. Predictability and true randomness matter too.</p></article>
+<article class="card"><div class="card-title"><div class="icon green">↗</div><div><h3>Mathematical breakdown</h3><p>The counting principle in action</p></div></div>
+<div class="stats"><div class="stat"><label>CHARACTER POOL (R)</label><strong id="pool">94</strong><small>possible choices per position</small></div><div class="stat"><label>PASSWORD LENGTH (L)</label><strong id="length">12</strong><small>number of positions</small></div><div class="stat wide"><label>THEORETICAL SEARCH SPACE</label><strong id="space">—</strong><div class="progress"><span id="progress"></span></div><small id="spaceNote">R choices across L positions</small></div><div class="stat wide entropy"><div><label>THEORETICAL ENTROPY</label><strong id="entropy">—</strong></div><code>H = L log₂(R)</code></div></div>
+<div class="formula"><label>COUNTING RULE</label><code>N = R<sup>L</sup></code><span>Multiply independent choices at each position.</span></div></article></div>
+<div class="columns lower">
+<article class="card"><div class="card-title"><div class="icon amber">◷</div><div><h3>Brute-force time explorer</h3><p>Model exhaustive guessing at a hypothetical speed.</p></div></div>
+<div class="speed"><label for="rate">GUESSES PER SECOND</label><select id="rate"><option value="1000">1,000 / second</option><option value="1000000" selected>1 million / second</option><option value="1000000000">1 billion / second</option><option value="1000000000000">1 trillion / second</option></select></div>
+<div class="timegrid"><div><label>AVERAGE SEARCH</label><strong id="avg">—</strong><small>about half the search space</small></div><div><label>WORST CASE</label><strong id="worst">—</strong><small>full exhaustive search</small></div></div>
+<div class="warning"><b>!</b><p><strong>Model, not a prediction.</strong> Real attack rates depend on hashing, hardware, rate limits, and password patterns.</p></div></article>
+<article class="card"><div class="card-title"><div class="icon blue">▦</div><div><h3>Character pool</h3><p>Character families detected in your sample</p></div></div>
+<div class="pool-row"><span class="sample lower">a–z</span><span><strong>Lowercase letters</strong><small>26 possible characters</small></span><b id="pLow">USED</b></div>
+<div class="pool-row"><span class="sample upper">A–Z</span><span><strong>Uppercase letters</strong><small>26 possible characters</small></span><b id="pUp">USED</b></div>
+<div class="pool-row"><span class="sample digits">0–9</span><span><strong>Digits</strong><small>10 possible characters</small></span><b id="pNum">USED</b></div>
+<div class="pool-row"><span class="sample symbols">!@#</span><span><strong>Common symbols</strong><small>32 printable ASCII symbols</small></span><b id="pSym">USED</b></div>
+<div class="pool-total"><span>Detected character pool</span><strong id="poolTotal">94 characters</strong></div></article></div>
+</section>
+<section class="view" id="pin"><div class="section-head"><div><label>EXPERIMENT 02 / PERMUTATIONS & COUNTING</label><h2>Every digit changes the odds.</h2><p>Change PIN rules and compare the number of possible sequences.</p></div><span class="live">● INTERACTIVE</span></div>
+<div class="pin-layout"><article class="card"><div class="card-title"><div class="icon purple">▦</div><div><h3>Configure your PIN</h3><p>Choose the rules for a valid code.</p></div></div><label class="field-label">PIN LENGTH</label><div class="lengths"><button data-len="4">4</button><button data-len="6" class="chosen">6</button><button data-len="8">8</button><button data-len="10">10</button><button data-len="12">12</button></div>
+<label class="toggle"><span><strong>Allow repeated digits</strong><small>Example: 112233</small></span><input id="repeat" type="checkbox" checked><i></i></label><label class="toggle"><span><strong>Allow leading zero</strong><small>Example: 012345</small></span><input id="zero" type="checkbox" checked><i></i></label><div class="tip">ⓘ &nbsp; A PIN is an ordered sequence. 1234 and 4321 are different PINs.</div>
+<div class="form-actions pin-actions"><button id="calculatePin" class="analyze-btn" type="button"><span>Calculate PIN</span><b>→</b></button><span id="pinSubmitStatus" class="submit-status" aria-live="polite">Ready to calculate</span></div>
+</article>
+<article class="card pin-result"><label>TOTAL VALID PIN SEQUENCES</label><strong id="pinTotal">1,000,000</strong><p id="pinFormula">10 choices per position → 10⁶</p><div class="slots" id="slots"></div><div class="pin-equation"><label>APPLIED FORMULA</label><code id="equation">N = 10⁶</code><p id="explanation">Each position has 10 independent choices.</p></div><div class="compare"><div><small>4-DIGIT</small><strong id="cmp4">10,000</strong></div><div><small>6-DIGIT</small><strong id="cmp6">1,000,000</strong></div><div><small>8-DIGIT</small><strong id="cmp8">100,000,000</strong></div></div></article></div></section>
+<section class="view" id="learn"><div class="section-head"><div><label>THE CONCEPTS BEHIND THE CODE</label><h2>Mathematics you can use.</h2><p>How a discrete mathematics unit applies to a real computing problem.</p></div><span class="live">● LEARN</span></div>
+<div class="theory-grid"><article class="card theory"><label>01 / COUNTING PRINCIPLE</label><div class="equation">N = R<sup>L</sup></div><h3>Multiply independent choices</h3><p>If each of L positions can independently contain any of R characters, the total number of strings is R raised to L.</p><div class="example"><small>EXAMPLE</small><strong>10⁴ = 10,000 four-digit sequences</strong></div></article>
+<article class="card theory"><label>02 / PERMUTATIONS</label><div class="equation">nP r = n! / (n − r)!</div><h3>Order matters</h3><p>When digits cannot repeat, each choice reduces the options for the next position. PIN order creates distinct sequences.</p><div class="example"><small>EXAMPLE</small><strong>10P3 = 10 × 9 × 8 = 720</strong></div></article>
+<article class="card theory"><label>03 / ENTROPY ESTIMATE</label><div class="equation">H = L log₂(R)</div><h3>Express search space in bits</h3><p>This estimate assumes uniform random selection. Human-created patterns can make a password much easier to guess than the theoretical space suggests.</p><div class="example"><small>APPLICATION</small><strong>Longer, random passwords generally resist guessing better</strong></div></article>
+<article class="card theory"><label>04 / BRUTE-FORCE MODEL</label><div class="equation">T ≈ N / G</div><h3>Estimate exhaustive search</h3><p>Divide search-space size N by hypothetical guesses per second G. Average exhaustive-search time is approximately half of worst case.</p><div class="example"><small>APPLICATION</small><strong>Password policy and security education</strong></div></article></div>
+<div class="outcome"><span>✦</span><div><h3>What this assignment demonstrates</h3><p>Combinatorics helps quantify the possible credentials a computer system must protect against guessing. Every result depends on the assumptions shown in the calculator.</p></div></div>
+<article class="card quiz-card">
+  <div class="card-title"><div class="icon blue">?</div><div><h3>Quick knowledge check</h3><p>Answer the question and submit to check your understanding.</p></div></div>
+  <p class="quiz-question"><strong>Question:</strong> If a 4-digit PIN allows repeated digits and leading zeros, how many possible PINs are there?</p>
+  <form id="mathQuiz">
+    <label class="quiz-option"><input type="radio" name="quizAnswer" value="1000"> 1,000</label>
+    <label class="quiz-option"><input type="radio" name="quizAnswer" value="10000"> 10,000</label>
+    <label class="quiz-option"><input type="radio" name="quizAnswer" value="5040"> 5,040</label>
+    <div class="form-actions"><button class="analyze-btn" type="submit"><span>Submit answer</span><b>→</b></button><span id="quizStatus" class="submit-status" aria-live="polite">Choose one answer</span></div>
+  </form>
+</article>
+</section>
+<footer><div><span class="footer-logo">S</span> securepass.lab</div><p>FOUNDATION OF MATHEMATICS · UNIT: COMBINATORICS</p><p>Sezan Mathakiya · MCA Semester 1</p></footer>
+</main><script src="script.js"></script></body></html>
